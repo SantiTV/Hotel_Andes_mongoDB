@@ -1,5 +1,11 @@
 package com.example.Hotel_Andes_mongoDB.modelo;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import lombok.ToString;
+
+@Document(collection="servicio")
+@ToString
 public class Servicio {
 
     private String nombre;

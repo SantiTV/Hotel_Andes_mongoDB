@@ -2,6 +2,12 @@ package com.example.Hotel_Andes_mongoDB.modelo;
 
 import java.util.Date;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import lombok.ToString;
+
+@Document(collection="reserva")
+@ToString
 public class Reserva {
 
     private int id;
