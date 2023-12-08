@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.Hotel_Andes_mongoDB.modelo.Habitacion;
-import repository.HabitacionRepository;
+import com.example.Hotel_Andes_mongoDB.repository.HabitacionRepository;
 
 import java.util.List;
 

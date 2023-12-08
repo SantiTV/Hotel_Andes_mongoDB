@@ -5,8 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.Hotel_Andes_mongoDB.modelo.Reserva;
-
-import repository.ReservaRepository;
+import com.example.Hotel_Andes_mongoDB.repository.ReservaRepository;
 
 import java.util.Date;
 import java.util.List;
