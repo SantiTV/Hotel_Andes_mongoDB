@@ -1,34 +1,48 @@
 package com.example.Hotel_Andes_mongoDB.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.Hotel_Andes_mongoDB.modelo.Servicio;
 
 import repository.ServicioRepository;
 
-import java.util.Date;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/servicio")
 public class ServicioController {
 
-    private final ServicioRepository servicioRepository;
-
     @Autowired
-    public ServicioController(ServicioRepository servicioRepository) {
-        this.servicioRepository = servicioRepository;
+    private ServicioRepository servicioRepository;
+
+    // Endpoint to insert a new servicio
+    @PostMapping("/insertarServicio")
+    public void insertarServicio(@RequestBody Servicio servicio) {
+        servicioRepository.insertarServicio(servicio);
     }
 
-    @GetMapping("/api/servicios")
-    public List<Servicio> obtenerServiciosConInformacion(
-            @RequestParam int idCliente,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaInicio,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaFin) {
-        return servicioRepository.obtenerConsumosConInformacionDeServicio(idCliente, fechaInicio, fechaFin);
+    // Endpoint to update a servicio
+    @PutMapping("/actualizarServicio/{idServicio}")
+    public void actualizarServicio(@PathVariable int idServicio, @RequestBody Servicio servicio) {
+        servicioRepository.actualizarServicio(idServicio, servicio.getCostoAdicional(), servicio.getHorario());
+    }
+
+    // Endpoint to delete a servicio
+    @DeleteMapping("/borrarServicio/{idServicio}")
+    public void borrarServicio(@PathVariable int idServicio) {
+        servicioRepository.borrarServicio(idServicio);
+    }
+
+    // Endpoint to get all servicios
+    @GetMapping("/consultarServicios")
+    public List<Servicio> consultarServicios() {
+        return servicioRepository.consultarServicios();
+    }
+
+    // Endpoint to get a single servicio by ID
+    @GetMapping("/consultarServicio/{idServicio}")
+    public Servicio consultarServicioPorId(@PathVariable int idServicio) {
+        return servicioRepository.consultarServicioPorId(idServicio);
     }
 }

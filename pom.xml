@@ -62,9 +62,7 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-mongodb</artifactId>
-            <!-- Remove the version for Spring Data MongoDB -->
         </dependency>
-
 
     <build>
         <plugins>

@@ -2,6 +2,7 @@ package com.example.Hotel_Andes_mongoDB.modelo;
 
 import java.util.Date;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.ToString;
@@ -9,7 +10,7 @@ import lombok.ToString;
 @Document(collection="reserva")
 @ToString
 public class Reserva {
-
+    @Id
     private int id;
     private Date fechaEntrada;
     private Date fechaSalida;

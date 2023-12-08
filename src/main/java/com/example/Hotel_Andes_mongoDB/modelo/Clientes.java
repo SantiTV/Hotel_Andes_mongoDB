@@ -1,5 +1,6 @@
 package com.example.Hotel_Andes_mongoDB.modelo;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.ToString;
@@ -7,7 +8,7 @@ import lombok.ToString;
 @Document(collection="clientes")
 @ToString
 public class Clientes {
-
+    @Id
     private int id;
     private String nombre;
     private String reservas;
